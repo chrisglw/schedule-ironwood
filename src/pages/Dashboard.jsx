@@ -34,7 +34,6 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <h1>Manager Dashboard</h1>
-      <button onClick={handleLogout}>Logout</button>
 
       <h2>Submitted Schedules</h2>
       {schedules.length > 0 ? (
