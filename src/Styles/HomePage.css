@@ -1,38 +1,37 @@
-/* Home Page Styles */
 .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-top: 30px; /* Increase this value to create more gap */
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+    padding-top: 30px; /* Adjust for smaller screens */
   }
-  
-  h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .home-container {
-      padding: 10px;
-    }
-  }
-  
+}

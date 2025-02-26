@@ -6,52 +6,44 @@
     padding: 10px 20px;
     background: #ffffff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    /* Ensure the navbar takes up the full width */
     max-width: 100%;
-    /* Prevent overflow */
     box-sizing: border-box;
-    /* Prevents padding from causing overflow */
     z-index: 10;
     overflow-x: hidden;
-    /* Prevent horizontal scrolling */
-}
-
-.logo-container {
+  }
+  
+  .logo-container {
     display: flex;
     align-items: center;
-}
-
-.logo {
+  }
+  
+  .logo {
     width: 80px;
     height: auto;
-}
-
-/* Specific class for login button */
-.navbar-login-btn {
+  }
+  
+  /* Specific class for login button */
+  .navbar-login-btn {
     background-color: #ff4d4d;
     color: white;
     padding: 6px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    /* Align button to the right, prevent stretching */
     margin-left: auto;
     margin-right: 20px;
-    width: auto;  /* Ensure the button doesn't stretch */
-    height: auto; /* Make sure the height is auto */
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-.navbar-login-btn:hover {
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+  }
+  
+  .navbar-login-btn:hover {
     background-color: #cc0000;
-}
-
-/* Modal */
-.login-modal {
+  }
+  
+  /* Modal */
+  .login-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -62,44 +54,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* Modal Content */
-.modal-content {
+  }
+  
+  /* Modal Content */
+  .modal-content {
     background: white;
     padding: 20px;
     border-radius: 8px;
     width: 320px;
-    /* Adjust width to fit form fields */
     text-align: center;
     position: relative;
     box-sizing: border-box;
-}
-
-/* Close Button */
-.close-btn {
+  }
+  
+  /* Close Button */
+  .close-btn {
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 20px;
     cursor: pointer;
-}
-
-/* Error message styling */
-.error {
+  }
+  
+  /* Error message styling */
+  .error {
     color: red;
     margin-bottom: 10px;
-}
-
-/* Form styling */
-form {
+  }
+  
+  /* Form styling */
+  form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-/* Input fields styling */
-input {
+  }
+  
+  /* Input fields styling */
+  input {
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
@@ -107,17 +98,15 @@ input {
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
-    /* Prevent overflow */
-}
-
-input:focus {
+  }
+  
+  input:focus {
     outline: none;
     border-color: #ff4d4d;
-    /* Focus border color */
-}
-
-/* Submit Button */
-button {
+  }
+  
+  /* Submit Button */
+  button {
     background-color: #ff4d4d;
     color: white;
     padding: 10px;
@@ -126,84 +115,34 @@ button {
     font-size: 16px;
     cursor: pointer;
     width: 100%;
-    /* Full-width button */
     margin-top: 10px;
-}
-
-/* Button Hover */
-button:hover {
+  }
+  
+  /* Button Hover */
+  button:hover {
     background-color: #cc0000;
-}
-
-/* Dashboard */
-.dashboard-container {
-    margin-top: 60px;
-    padding: 20px;
-}
-
-.dashboard-container h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.dashboard-container button {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-.dashboard-container button:hover {
-    background-color: #0056b3;
-}
-
-.dashboard-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.dashboard-container li {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.dashboard-container li strong {
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
     .navbar-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
     }
-
+  
     .logo {
-        width: 60px;
+      width: 60px;
+      margin-bottom: 10px; /* Add space between logo and button */
     }
-
+  
     .navbar-login-btn {
-        margin-top: 10px;
+      margin: 10px 0; /* Center the button and add spacing */
+      width: 100%; /* Make the button full width */
+      max-width: 200px; /* Limit button width */
     }
-
+  
     .modal-content {
-        width: 280px;
-        /* Adjust width for smaller screens */
+      width: 280px;
     }
-
-    .dashboard-container h1 {
-        font-size: 1.5rem;
-    }
-
-    .dashboard-container button {
-        padding: 6px 12px;
-    }
-}
+  }

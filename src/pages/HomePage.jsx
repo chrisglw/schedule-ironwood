@@ -35,7 +35,6 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <h1>Scheduler App</h1>
       <ScheduleForm />
 
       {showLogin && (
