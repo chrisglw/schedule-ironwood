@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Navbar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
