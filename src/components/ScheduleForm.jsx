@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { database } from "../firebase"; 
+import { database } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import "../styles/ScheduleForm.css";
 
@@ -16,6 +16,15 @@ const ScheduleForm = () => {
 
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+  // Function to get the current week in ISO format (e.g., "2023-W44")
+  const getCurrentWeek = () => {
+    const date = new Date();
+    const startOfYear = new Date(date.getFullYear(), 0, 1);
+    const pastDaysOfYear = (date - startOfYear) / 86400000;
+    const weekNumber = Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
+    return `${date.getFullYear()}-W${weekNumber.toString().padStart(2, "0")}`;
+  };
+
   const handleChange = (day, field, value) => {
     setSchedule((prev) => ({
       ...prev,
@@ -31,7 +40,9 @@ const ScheduleForm = () => {
     }
 
     try {
-      await addDoc(collection(database, "schedule"), { name, schedule }); 
+      // Add the current week to the schedule data
+      const week = getCurrentWeek();
+      await addDoc(collection(database, "schedule"), { name, schedule, week });
       setName("");
       setSchedule({
         1: { 0: "", 1: "" },
@@ -61,9 +72,7 @@ const ScheduleForm = () => {
 
         {Object.keys(schedule).map((dayIndex) => (
           <div key={dayIndex} className="day-container">
-            <label>
-              {daysOfWeek[dayIndex - 1]}
-            </label>
+            <label>{daysOfWeek[dayIndex - 1]}</label>
             <div className="time-inputs">
               <input
                 type="time"

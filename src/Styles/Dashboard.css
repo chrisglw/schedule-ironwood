@@ -1,17 +1,26 @@
-/* Dashboard */
+/* Dashboard.css */
 .dashboard-container {
   padding: 20px;
   padding-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-container h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  color: #333;
+  text-align: center;
 }
 
 .dashboard-container h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 20px;
+  color: #444;
 }
 
 .dashboard-container ul {
@@ -20,16 +29,22 @@
 }
 
 .dashboard-container li {
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-container li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-container li strong {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 1.2rem;
   color: #333;
 }
@@ -45,29 +60,46 @@
   color: #333;
 }
 
+/* Week Selector */
+.dashboard-container select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .dashboard-container {
-    padding-top: 30px; 
+    padding: 15px;
   }
 
   .dashboard-container h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .dashboard-container h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .dashboard-container li {
-    padding: 10px;
+    padding: 15px;
   }
 
   .dashboard-container li strong {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .dashboard-container li p {
+    font-size: 0.9rem;
+  }
+
+  .dashboard-container select {
     font-size: 0.9rem;
   }
 }

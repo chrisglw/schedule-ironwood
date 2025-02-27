@@ -66,7 +66,7 @@ const Navbar = () => {
   return (
     <nav className="navbar-container">
       <div className="logo-container">
-        <img src="../../public/logo.png" alt="Logo" className="logo" />
+        <img src="/logo.png" alt="Logo" className="logo" />
       </div>
 
       {isLoggedIn ? (
