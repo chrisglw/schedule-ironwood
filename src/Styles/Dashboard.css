@@ -73,6 +73,39 @@
   cursor: pointer;
 }
 
+/* Status Dropdown */
+.status-dropdown {
+  margin-top: 10px;
+}
+
+.status-dropdown label {
+  font-size: 1rem;
+  color: #555;
+  margin-right: 10px;
+}
+
+.status-dropdown select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Status Colors */
+.schedule-item.entered {
+  border-left: 5px solid green;
+}
+
+.schedule-item.not-entered {
+  border-left: 5px solid yellow;
+}
+
+.schedule-item.invalid {
+  border-left: 5px solid red;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .dashboard-container {
@@ -100,6 +133,10 @@
   }
 
   .dashboard-container select {
+    font-size: 0.9rem;
+  }
+
+  .status-dropdown select {
     font-size: 0.9rem;
   }
 }

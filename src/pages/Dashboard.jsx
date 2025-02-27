@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { database } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
@@ -53,6 +53,18 @@ const Dashboard = () => {
     (schedule) => schedule.week === selectedWeek
   );
 
+  // Update schedule status
+  const handleStatusChange = async (id, status) => {
+    try {
+      await updateDoc(doc(database, "schedule", id), { status });
+      setSchedules((prev) =>
+        prev.map((s) => (s.id === id ? { ...s, status } : s))
+      );
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
   const handleLogout = () => {
     signOut(auth).then(() => navigate("/"));
   };
@@ -81,8 +93,14 @@ const Dashboard = () => {
       {filteredSchedules.length > 0 ? (
         <ul>
           {filteredSchedules.map((schedule) => (
-            <li key={schedule.id}>
+            <li
+              key={schedule.id}
+              className={`schedule-item ${schedule.status.toLowerCase().replace(" ", "-")}`}
+            >
               <strong>{schedule.name}</strong>
+              <p>Type: {schedule.scheduleType}</p>
+              <p>Starts on: {schedule.customDates || "N/A"}</p>
+              <p>Submitted: {new Date(schedule.submissionDate).toLocaleString()}</p>
               {Object.entries(schedule.schedule || {}).map(([day, times]) => (
                 <p key={day}>
                   <strong>
@@ -91,6 +109,17 @@ const Dashboard = () => {
                   {times[0] || "N/A"} - {times[1] || "N/A"}
                 </p>
               ))}
+              <div className="status-dropdown">
+                <label>Status: </label>
+                <select
+                  value={schedule.status}
+                  onChange={(e) => handleStatusChange(schedule.id, e.target.value)}
+                >
+                  <option value="Entered">Entered</option>
+                  <option value="Not Entered">Not Entered</option>
+                  <option value="Invalid">Invalid</option>
+                </select>
+              </div>
             </li>
           ))}
         </ul>

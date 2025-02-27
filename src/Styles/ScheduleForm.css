@@ -10,15 +10,31 @@
 h2 {
     font-size: 2rem;
     color: #333;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-input {
+/* Name Input Box */
+input[type="text"] {
     padding: 8px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    width: 100%;
+    max-width: 100%;
 }
 
+/* Custom Dates Input Box */
+input[type="text"].custom-dates {
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Submit Button */
 button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -27,6 +43,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -53,4 +72,40 @@ label {
 
 .time-inputs input {
     width: 120px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.form-group select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .schedule-form-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .time-inputs input {
+        width: 100px;
+    }
 }

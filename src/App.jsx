@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar /> {/* Add Navbar to every page */}
+      <Navbar /> 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />

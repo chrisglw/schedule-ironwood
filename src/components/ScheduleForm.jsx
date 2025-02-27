@@ -5,6 +5,8 @@ import "../styles/ScheduleForm.css";
 
 const ScheduleForm = () => {
   const [name, setName] = useState("");
+  const [scheduleType, setScheduleType] = useState("permanent"); // "permanent" or "temporary"
+  const [customDates, setCustomDates] = useState("");
   const [schedule, setSchedule] = useState({
     1: { 0: "", 1: "" },
     2: { 0: "", 1: "" },
@@ -40,9 +42,18 @@ const ScheduleForm = () => {
     }
 
     try {
-      // Add the current week to the schedule data
+      // Add the current week, schedule type, custom dates, and submission timestamp
       const week = getCurrentWeek();
-      await addDoc(collection(database, "schedule"), { name, schedule, week });
+      const submissionDate = new Date().toISOString(); // Current date and time
+      await addDoc(collection(database, "schedule"), {
+        name,
+        schedule,
+        week,
+        scheduleType,
+        customDates,
+        submissionDate,
+        status: "Not Entered", // Default status for manager tracking
+      });
       setName("");
       setSchedule({
         1: { 0: "", 1: "" },
@@ -52,6 +63,7 @@ const ScheduleForm = () => {
         5: { 0: "", 1: "" },
         6: { 0: "", 1: "" },
       });
+      setCustomDates("");
       alert("Schedule submitted!");
     } catch (error) {
       console.error("Error saving schedule:", error);
@@ -70,6 +82,7 @@ const ScheduleForm = () => {
           required
         />
 
+        {/* Schedule Inputs */}
         {Object.keys(schedule).map((dayIndex) => (
           <div key={dayIndex} className="day-container">
             <label>{daysOfWeek[dayIndex - 1]}</label>
@@ -88,6 +101,29 @@ const ScheduleForm = () => {
             </div>
           </div>
         ))}
+
+        {/* Schedule Type Dropdown */}
+        <div className="form-group">
+          <label>Schedule Type:</label>
+          <select
+            value={scheduleType}
+            onChange={(e) => setScheduleType(e.target.value)}
+          >
+            <option value="permanent">Permanent</option>
+            <option value="temporary">Temporary</option>
+          </select>
+        </div>
+
+        {/* Custom Dates Input */}
+        <div className="form-group">
+          <p>The schedule will take place the following week, unless specified.</p>
+          <input
+            type="text"
+            placeholder="Enter the start date for this schedule"
+            value={customDates}
+            onChange={(e) => setCustomDates(e.target.value)}
+          />
+        </div>
 
         <button type="submit">Submit Schedule</button>
       </form>
